@@ -9,21 +9,27 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: "product-service"
-          uri: "lb://product-service"
-          predicates:
-            - "Path=/api/products/**"
         - id: "cart-service"
           uri: "lb://cart-service"
           predicates:
             - "Path=/api/carts/**"
+        - id: "order-service"
+          uri: "lb://order-service"
+          predicates:
+            - "Path=/api/orders/**"
+        - id: "product-service"
+          uri: "lb://product-service"
+          predicates:
+            - "Path=/api/products/**"
       default-filters:
         - "DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin"
       globalcors:
         corsConfigurations:
           '[/**]':
             allowCredentials: true
-            allowedOrigins: "http://localhost:3000"
+            allowedOrigins:
+              - "http://localhost:3000"
+              - "https://hoppscotch.io"
             allowedHeaders: "*"
             allowedMethods:
               - GET

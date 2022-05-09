@@ -35,8 +35,8 @@ public class CartServiceRestImpl implements CartService {
 
     @Override
     public Order checkout() {
-        String url = "lb://cart-service/raw/checkout";
-        return restTemplate.getForEntity(url, Order.class).getBody();
+        String url = "http://cart-service/raw/checkout";
+        return restTemplate.postForEntity(url, null, Order.class).getBody();
     }
 
 }
