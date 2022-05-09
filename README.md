@@ -8,6 +8,7 @@
     - 工位的Mac上Spring服务多了之后启动大概要等10秒
     - 工作站上1秒左右
   - 但是远程处理Maven、XML、YAML会非常非常非常卡（估计是bug）
+  - 点击屏幕上面或者代码页面的运行按钮能正常处理lombok注解，但是点击Services面板里的运行按钮就编译失败（估计也是bug，前几次作业是命令行调用maven的，非常痛苦）
   - 构建工具改成了Gradle之后就非常流畅
 - 使用Docker运行以下服务
   - Zookeeper（服务注册，替换此前的Eureka）
@@ -58,7 +59,7 @@ DELETE /api/carts/items?productId={productId}
 GET    /api/orders
 POST   /api/orders
 GET    /api/deliveries?orderId={orderId}
-GET    /api/deliveries/{orderId}
+GET    /api/deliveries/{deliveryId}
 ```
 
 
