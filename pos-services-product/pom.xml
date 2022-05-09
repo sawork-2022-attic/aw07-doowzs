@@ -18,6 +18,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>edu.nju.sa2022</groupId>
+            <artifactId>pos-common</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
@@ -53,12 +59,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.12.1</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
         </dependency>
@@ -91,8 +91,8 @@
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <configuration>
                     <modelNameSuffix>Dto</modelNameSuffix>
-                    <apiPackage>com.micropos.products.api</apiPackage>
-                    <modelPackage>com.micropos.products.dto</modelPackage>
+                    <apiPackage>edu.nju.sa2022.micropos.product.api</apiPackage>
+                    <modelPackage>edu.nju.sa2022.micropos.product.dto</modelPackage>
                 </configuration>
             </plugin>
         </plugins>

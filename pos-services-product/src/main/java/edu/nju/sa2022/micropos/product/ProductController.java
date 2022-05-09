@@ -1,16 +1,14 @@
-package edu.nju.sa2022.micropos.product.rest;
+package edu.nju.sa2022.micropos.product;
 
-import com.micropos.products.api.ProductsApi;
-import com.micropos.products.dto.ProductDto;
-import edu.nju.sa2022.micropos.product.mapper.ProductMapper;
-import edu.nju.sa2022.micropos.product.model.Product;
-import edu.nju.sa2022.micropos.product.service.ProductService;
+import edu.nju.sa2022.micropos.models.Product;
+import edu.nju.sa2022.micropos.product.api.ProductsApi;
+import edu.nju.sa2022.micropos.product.dto.ProductDto;
+import edu.nju.sa2022.micropos.services.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,9 +16,7 @@ import java.util.List;
 public class ProductController implements ProductsApi {
 
     private final ProductMapper productMapper;
-
     private final ProductService productService;
-
 
     public ProductController(ProductService productService, ProductMapper productMapper) {
         this.productMapper = productMapper;
@@ -29,10 +25,7 @@ public class ProductController implements ProductsApi {
 
     @Override
     public ResponseEntity<List<ProductDto>> listProducts() {
-        List<ProductDto> products = new ArrayList<>(productMapper.toProductsDto(this.productService.products()));
-        if (products.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        List<ProductDto> products = productMapper.toProductsDto(this.productService.listProducts());
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
@@ -44,4 +37,5 @@ public class ProductController implements ProductsApi {
         }
         return new ResponseEntity<>(productMapper.toProductDto(product), HttpStatus.OK);
     }
+
 }

@@ -1,0 +1,20 @@
+package edu.nju.sa2022.micropos.product;
+
+import edu.nju.sa2022.micropos.models.Product;
+import edu.nju.sa2022.micropos.product.dto.ProductDto;
+import org.mapstruct.Mapper;
+
+import java.util.List;
+
+@Mapper
+public interface ProductMapper {
+
+    List<ProductDto> toProductsDto(List<Product> products);
+
+    List<Product> toProducts(List<ProductDto> products);
+
+    Product toProduct(ProductDto productDto);
+
+    ProductDto toProductDto(Product pet);
+
+}
