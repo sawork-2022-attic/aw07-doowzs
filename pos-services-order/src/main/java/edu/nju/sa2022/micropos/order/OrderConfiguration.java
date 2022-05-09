@@ -4,6 +4,7 @@ import edu.nju.sa2022.micropos.services.CartService;
 import edu.nju.sa2022.micropos.services.OrderService;
 import edu.nju.sa2022.micropos.services.rest.CartServiceRestImpl;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -18,8 +19,10 @@ public class OrderConfiguration {
     }
 
     @Bean
-    public OrderService orderService(OrderRepository orderRepository, CartService cartService) {
-        return new OrderServiceImpl(orderRepository, cartService);
+    public OrderService orderService(OrderRepository orderRepository,
+                                     CartService cartService,
+                                     StreamBridge streamBridge) {
+        return new OrderServiceImpl(orderRepository, cartService, streamBridge);
     }
 
     @Bean

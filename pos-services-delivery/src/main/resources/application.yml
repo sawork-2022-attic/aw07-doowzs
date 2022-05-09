@@ -1,12 +1,12 @@
 server:
-  port: 30083
+  port: 30084
 spring:
   application:
-    name: "order-service"
+    name: "delivery-service"
   cloud:
     stream:
       bindings:
-        createOrder-out-0:
+        createDelivery-in-0:
           destination: "newOrders"
       kafka:
         binder:
