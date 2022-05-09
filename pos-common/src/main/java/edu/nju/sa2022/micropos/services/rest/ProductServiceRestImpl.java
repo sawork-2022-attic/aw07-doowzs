@@ -21,7 +21,7 @@ public class ProductServiceRestImpl implements ProductService {
 
     @Override
     public Product findProduct(String productId) {
-        String url = String.format("http://product-service/raw/products/%s", productId);
+        String url = String.format("http://product-service/raw/%s", productId);
         return restTemplate.getForEntity(url, Product.class).getBody();
     }
 
