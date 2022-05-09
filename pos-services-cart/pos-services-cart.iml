@@ -22,6 +22,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="pos-common" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-mongodb:2.6.6" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-sync:4.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:bson:4.4.2" level="project" />
@@ -113,7 +114,7 @@
     <orderEntry type="library" name="Maven: org.springframework.plugin:spring-plugin-metadata:2.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.swagger:swagger-annotations:1.5.20" level="project" />
     <orderEntry type="library" name="Maven: io.swagger:swagger-models:1.5.20" level="project" />
-    <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.12.1" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.22" level="project" />
     <orderEntry type="library" name="Maven: org.mapstruct:mapstruct:1.4.2.Final" level="project" />
     <orderEntry type="library" name="Maven: org.mapstruct:mapstruct-processor:1.4.2.Final" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.6.6" level="project" />

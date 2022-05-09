@@ -120,16 +120,9 @@ components:
       type: object
       properties:
         items:
-          type: array
-          items:
-            $ref: "#/components/schemas/Item"
-    Item:
-      type: object
-      properties:
-        product:
-          $ref: "#/components/schemas/Product"
-        quantity:
-          type: integer
+          type: object
+          additionalProperties:
+            type: int
     Checkout:
       type: object
       properties:

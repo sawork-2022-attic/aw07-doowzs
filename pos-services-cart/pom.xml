@@ -18,6 +18,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>edu.nju.sa2022</groupId>
+            <artifactId>pos-common</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
@@ -40,9 +46,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.12.1</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
         <dependency>
@@ -70,12 +75,16 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <configuration>
                     <modelNameSuffix>Dto</modelNameSuffix>
-                    <apiPackage>com.micropos.carts.api</apiPackage>
-                    <modelPackage>com.micropos.carts.dto</modelPackage>
+                    <apiPackage>edu.nju.sa2022.micropos.cart.api</apiPackage>
+                    <modelPackage>edu.nju.sa2022.micropos.cart.dto</modelPackage>
                 </configuration>
             </plugin>
         </plugins>

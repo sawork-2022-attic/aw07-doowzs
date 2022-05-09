@@ -6,3 +6,8 @@ spring:
   cloud:
     zookeeper:
       connect-string: "localhost:30001"
+  data:
+    mongodb:
+      host: "localhost"
+      port: 30004
+      database: "pos"

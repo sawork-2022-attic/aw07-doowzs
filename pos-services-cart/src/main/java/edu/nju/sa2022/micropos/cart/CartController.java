@@ -1,11 +1,10 @@
-package edu.nju.sa2022.micropos.cart.rest;
+package edu.nju.sa2022.micropos.cart;
 
 import edu.nju.sa2022.micropos.cart.api.CartsApi;
 import edu.nju.sa2022.micropos.cart.dto.CartDto;
 import edu.nju.sa2022.micropos.cart.dto.CheckoutDto;
-import edu.nju.sa2022.micropos.cart.mapper.CartMapper;
-import edu.nju.sa2022.micropos.cart.model.Cart;
-import edu.nju.sa2022.micropos.cart.service.CartService;
+import edu.nju.sa2022.micropos.models.Cart;
+import edu.nju.sa2022.micropos.services.CartService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -22,7 +21,7 @@ public class CartController implements CartsApi {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    public CartController(CartMapper cartMapper, CartService cartService) {
+    public CartController(CartService cartService, CartMapper cartMapper) {
         this.cartMapper = cartMapper;
         this.cartService = cartService;
     }
