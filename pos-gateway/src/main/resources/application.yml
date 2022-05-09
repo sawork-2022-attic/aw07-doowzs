@@ -13,6 +13,10 @@ spring:
           uri: "lb://cart-service"
           predicates:
             - "Path=/api/carts/**"
+        - id: "delivery-service"
+          uri: "lb://delivery-service"
+          predicates:
+            - "Path=/api/deliveries/**"
         - id: "order-service"
           uri: "lb://order-service"
           predicates:
