@@ -2,7 +2,6 @@ package edu.nju.sa2022.micropos.cart;
 
 import edu.nju.sa2022.micropos.cart.api.CartsApi;
 import edu.nju.sa2022.micropos.cart.dto.CartDto;
-import edu.nju.sa2022.micropos.cart.dto.CheckoutDto;
 import edu.nju.sa2022.micropos.models.Cart;
 import edu.nju.sa2022.micropos.services.CartService;
 import org.slf4j.Logger;
@@ -44,10 +43,4 @@ public class CartController implements CartsApi {
         return new ResponseEntity<>(cartMapper.toCartDto(cart), HttpStatus.OK);
     }
 
-    @Override
-    public ResponseEntity<CheckoutDto> checkout() {
-        CheckoutDto result = new CheckoutDto();
-        result.setTotal(cartService.checkout());
-        return new ResponseEntity<>(result, HttpStatus.OK);
-    }
 }

@@ -1,6 +1,7 @@
 package edu.nju.sa2022.micropos.cart;
 
 import edu.nju.sa2022.micropos.models.Cart;
+import edu.nju.sa2022.micropos.models.Order;
 import edu.nju.sa2022.micropos.models.Product;
 import edu.nju.sa2022.micropos.services.CartService;
 import edu.nju.sa2022.micropos.services.ProductService;
@@ -67,11 +68,14 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public double checkout() {
+    public Order checkout() {
         Cart cart = getCart();
-        double total = getTotal(cart);
         cartRepository.delete(cart);
-        return total;
+        return Order.builder()
+                .userId(cart.getUserId())
+                .items(cart.getItems())
+                .total(getTotal(cart))
+                .build();
     }
 
 }

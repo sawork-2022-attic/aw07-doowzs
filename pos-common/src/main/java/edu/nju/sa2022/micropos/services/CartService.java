@@ -1,6 +1,7 @@
 package edu.nju.sa2022.micropos.services;
 
 import edu.nju.sa2022.micropos.models.Cart;
+import edu.nju.sa2022.micropos.models.Order;
 
 public interface CartService {
 
@@ -12,6 +13,6 @@ public interface CartService {
 
     double getTotal();
 
-    double checkout();
+    Order checkout();
 
 }

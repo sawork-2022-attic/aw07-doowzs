@@ -81,25 +81,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  /carts/checkout:
-    post:
-      summary: Checkout and clear cart
-      operationId: checkout
-      tags:
-        - cart
-      responses:
-        '200':
-          description: Total price
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Checkout"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
 components:
   schemas:
     Product:
@@ -123,11 +104,6 @@ components:
           type: object
           additionalProperties:
             type: int
-    Checkout:
-      type: object
-      properties:
-        total:
-          type: double
     Error:
       type: object
       required:

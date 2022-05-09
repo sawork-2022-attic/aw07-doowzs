@@ -6,6 +6,24 @@ info:
     name: MIT
 paths:
   /orders:
+    get:
+      summary: List orders
+      operationId: listOrders
+      tags:
+        - orders
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Orders"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
     post:
       summary: Create new order
       operationId: createOrder
@@ -70,6 +88,10 @@ components:
             type: int
         total:
           type: double
+    Orders:
+      type: array
+      items:
+        $ref: "#/components/schemas/Order"
     Error:
       type: object
       required:
