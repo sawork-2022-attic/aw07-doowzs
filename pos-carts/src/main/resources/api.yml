@@ -1,0 +1,148 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Carts
+  license:
+    name: MIT
+paths:
+  /carts:
+    get:
+      summary: Get cart
+      operationId: getCart
+      tags:
+        - cart
+      responses:
+        '200':
+          description: A cart
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /carts/items/{productId}:
+    post:
+      summary: Add item to cart
+      operationId: addItem
+      tags:
+        - cart
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: ID of product to add
+          schema:
+            type: string
+        - name: amount
+          in: query
+          required: true
+          description: Amount of product to add
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Updated Cart
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Remove item from cart
+      operationId: removeItem
+      tags:
+        - cart
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: ID of product to add
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Updated Cart
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /carts/checkout:
+    post:
+      summary: Checkout and clear cart
+      operationId: checkout
+      tags:
+        - cart
+      responses:
+        '200':
+          description: Total price
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Checkout"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Product:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        price:
+          type: double
+        image:
+          type: string
+    Cart:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
+    Item:
+      type: object
+      properties:
+        product:
+          $ref: "#/components/schemas/Product"
+        quantity:
+          type: integer
+    Checkout:
+      type: object
+      properties:
+        total:
+          type: double
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
