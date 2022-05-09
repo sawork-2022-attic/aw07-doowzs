@@ -7,6 +7,8 @@
         <module>pos-common</module>
         <module>pos-gateway</module>
         <module>pos-services-cart</module>
+        <module>pos-services-delivery</module>
+        <module>pos-services-order</module>
         <module>pos-services-product</module>
     </modules>
     <parent>
