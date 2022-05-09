@@ -2,11 +2,12 @@ package edu.nju.sa2022.micropos.product;
 
 import edu.nju.sa2022.micropos.models.Product;
 import edu.nju.sa2022.micropos.product.dto.ProductDto;
+import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface ProductMapper {
 
     List<ProductDto> toProductsDto(List<Product> products);

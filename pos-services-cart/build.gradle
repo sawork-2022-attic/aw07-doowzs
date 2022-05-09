@@ -1,0 +1,57 @@
+plugins {
+    id "org.springframework.boot" version "2.6.7"
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+    id "io.freefair.lombok" version "6.4.3"
+    id "org.openapi.generator" version "5.3.0"
+    id "java"
+}
+
+group = "edu.nju.sa2022.micropos"
+version = "0.0.1-SNAPSHOT"
+sourceCompatibility = "11"
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set("springCloudVersion", "2021.0.2")
+    set("openApiOutputDir", "$buildDir/generated-sources")
+}
+
+dependencies {
+    implementation project(":pos-common")
+
+    implementation "org.springframework.boot:spring-boot-starter-data-mongodb"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.cloud:spring-cloud-starter-zookeeper-discovery"
+
+    implementation "org.mapstruct:mapstruct:1.4.2.Final"
+    annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
+
+    implementation "io.springfox:springfox-swagger2:3.0.0"
+    implementation "org.openapitools:jackson-databind-nullable:0.2.2"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+openApiGenerate {
+    generatorName = "spring"
+    library = "spring-boot"
+    inputSpec = "$projectDir/src/main/resources/api.yml"
+    outputDir = "$openApiOutputDir"
+    modelNameSuffix = "dto"
+    apiPackage = "edu.nju.sa2022.micropos.cart.api"
+    modelPackage = "edu.nju.sa2022.micropos.cart.dto"
+    configOptions = [
+            interfaceOnly: "true"
+    ]
+}
+
+sourceSets.main.java.srcDirs += ["$openApiOutputDir/src/main/java"]
+compileJava.dependsOn tasks.openApiGenerate
+
