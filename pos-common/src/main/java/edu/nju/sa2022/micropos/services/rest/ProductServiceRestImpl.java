@@ -20,9 +20,13 @@ public class ProductServiceRestImpl implements ProductService {
     }
 
     @Override
-    public Product getProduct(String productId) {
+    public Product findProduct(String productId) {
         String url = String.format("lb://product-service/raw/products/%s", productId);
         return restTemplate.getForEntity(url, Product.class).getBody();
     }
 
+    @Override
+    public Product saveProduct(Product product) {
+        throw new UnsupportedOperationException("not implemented in rest impl");
+    }
 }

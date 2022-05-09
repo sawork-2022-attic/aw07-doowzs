@@ -31,7 +31,7 @@ public class ProductController implements ProductsApi {
 
     @Override
     public ResponseEntity<ProductDto> showProductById(String productId) {
-        Product product = this.productService.getProduct(productId);
+        Product product = this.productService.findProduct(productId);
         if (product == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

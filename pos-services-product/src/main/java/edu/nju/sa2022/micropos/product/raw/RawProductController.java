@@ -21,7 +21,7 @@ public class RawProductController {
 
     @GetMapping("{productId}")
     public ResponseEntity<Product> getProduct(@PathVariable String productId) {
-        Product product = this.productService.getProduct(productId);
+        Product product = this.productService.findProduct(productId);
         if (product == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

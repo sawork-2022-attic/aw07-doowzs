@@ -60,7 +60,7 @@ public class CartServiceImpl implements CartService {
                 .mapToDouble((entry) -> {
                     final String productId = entry.getKey();
                     final Integer quantity = entry.getValue();
-                    final Product product = productService.getProduct(productId);
+                    final Product product = productService.findProduct(productId);
                     return product.getPrice() * quantity;
                 })
                 .sum();
